@@ -7,4 +7,10 @@ res.send('This is Rest api created by afhaam')
 
 });
 
+router.post('/reach',(req,res)=>{
+
+console.log(req.body);
+
+})
+
 export default router;
