@@ -13,6 +13,15 @@ router.get('/otpSend',sendOtp);
 router.post('/verifyOtp',verifyOtp)
 router.post('/testOtpSend',testSend)
 router.post('/testVerify',testVerify)
+router.post('/testForFazil',(req,res)=>{
+
+  res.json({
+    fazil:"ooomb myre.neeeeeti"
+  })
+
+})
+
+
 
 
 export default router
