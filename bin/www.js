@@ -3,8 +3,10 @@
 /** * Module dependencies. */
 
 import app from '../app.js';
+import chalk from 'chalk';
 import debug from 'debug';
 import http from 'http';
+import {connectDatabase }from '../utils/mongodbConnection.js'
 debug('server:server');
 /**
  * Get port from environment and store in Express.
@@ -16,16 +18,22 @@ var port = normalizePort(process.env.PORT || '8000');
 /**
  * Create HTTP server.
  */
-
 var server = http.createServer(app);
+
+connectDatabase().then(()=>{
+
+
+  server.listen(port,()=>{
+    console.log(chalk.yellow.bold(`Server running on port ${port}`));
+    });
+})
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port,()=>{
-console.log(`Server running on port ${port}`);
-});
+
+
 server.on('error', onError);
 server.on('listening', onListening);
 
